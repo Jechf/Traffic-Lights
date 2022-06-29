@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import "../../styles/home.css"
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
+let colorLights = ["red","yellow","green"];
+
 const Home = () => {
+	const [on , setOn] = useState("off");
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="row mt-5">
+		<div className="col-5" onClick={()=>{setOn('off')}}></div>
+		<div className="container col-2">
+			<div className="container text-center">
+				<div className="container text-center mt-1" id="semaforo">
+					<div onClick={()=>{setOn('onred')}} className={'light red ' + (on == 'onred' ? 'encendidored' : '')} ></div>
+					<div onClick={()=>{setOn('onyellow')}} className={'light yellow ' + (on == 'onyellow' ? 'encendidoyellow' : '')} ></div>
+					<div onClick={()=>{setOn('ongreen')}} className={'light green ' + (on == 'ongreen' ? 'encendidogreen' : '')} ></div>
+				</div>
+			</div>
+			<div id="base"></div>
+		</div>
+		<div className="col-5" onClick={()=>{setOn('off')}}></div>
 		</div>
 	);
 };
